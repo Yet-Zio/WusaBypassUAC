@@ -41,5 +41,11 @@ On developing one, we used the same sources from [Exploit-Development](https://g
 ### 2.1 The Malicious DLL
 Just like dccw.exe, wusa.exe depends on some functions from comctl32.dll that we need to create or forward to the original DLL. Without implementing or forwarding the execution of these functions to the original DLL, wusa.exe will fail to launch with an error that it can't find those functions in the DLL.
 
-Ofcourse we can use the tool [ExportsToC++](https://github.com/michaellandi/exportstoc) to port all exports from compctl32.dll to C++ by **pragma**, this resolves the issue of defining them.
+Ofcourse we can use the tool [ExportsToC++](https://github.com/michaellandi/exportstoc) to port all exports from comctl32.dll to C++ by **pragma**, this resolves the issue of defining them.
 
+<img src="https://github.com/Yet-Zio/WusaBypassUAC/blob/main/snaps/exportsToC.PNG">
+
+All available functions are resolved and saved as a cpp source. However, we only need to forward the functions wusa.exe needs, not all from comctl32.dll. To check which all functions are imported by wusa.exe, we can use a MSVC tool called [DUMPBIN](https://docs.microsoft.com/en-us/cpp/build/reference/dumpbin-reference?view=msvc-160) which lists out several information about the binary file. We can use the following command to list out the imports from wusa.exe:
+```shell
+dumpbin.exe /IMPORTS C:\Windows\System32\wusa.exe
+```
