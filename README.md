@@ -22,3 +22,16 @@ However, wusa.exe is trying to look for a DLL called [comctl32.dll](https://docs
 Since it doesn't contain the DLL, wusa.exe looks under WinSxS for a folder with the structure:
 <p>[arch]_microsoft.windows.common-controls_[sequencial_code]_[windows_version]_none_[sequencial_number]</p>
 
+<img src="https://github.com/Yet-Zio/WusaBypassUAC/blob/main/snaps/winsxsdir.PNG">
+However, there are two folders from where comctl32.dll can be loaded by wusa.exe.
+
+This can be exploited by a 32bit process when it copies a Malicious DLL to one of these locations and invokes wusa.exe which will launch its target program and children with high integrity.
+
+### 1.3 Vulnerability Verification
+
+Since we know that a mode of vulnerability is possible, we can verify it by creating the **"wusa.exe.Local"** folder and under that the first WinSxS folder wusa.exe loads comctl32.dll from. On doing that and on capturing the execution of wusa.exe in Procmon, we get the following results:
+
+<img src="https://github.com/Yet-Zio/WusaBypassUAC/blob/main/snaps/wusaerror.png">
+
+As we expected, wusa.exe throws an error as it cannot find comctl32.dll under any of those folders we created. This proves that the vulnerability exists in wusa.exe.
+
