@@ -35,3 +35,11 @@ Since we know that a mode of vulnerability is possible, we can verify it by crea
 
 As we expected, wusa.exe throws an error as it cannot find comctl32.dll under any of those folders we created. This proves that the vulnerability exists in wusa.exe.
 
+## 2.0 Developing an exploit
+On developing one, we used the same sources from [Exploit-Development](https://github.com/L3cr0f/DccwBypassUAC#13-exploit-development) till [Interoperability](https://github.com/L3cr0f/DccwBypassUAC#133-interoperability).
+
+### 2.1 The Malicious DLL
+Just like dccw.exe, wusa.exe depends on some functions from comctl32.dll that we need to create or forward to the original DLL. Without implementing or forwarding the execution of these functions to the original DLL, wusa.exe will fail to launch with an error that it can't find those functions in the DLL.
+
+Ofcourse we can use the tool [ExportsToC++](https://github.com/michaellandi/exportstoc) to port all exports from compctl32.dll to C++ by **pragma**, this resolves the issue of defining them.
+
