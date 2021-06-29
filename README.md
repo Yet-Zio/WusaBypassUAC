@@ -18,4 +18,7 @@ By filtering execution of wusa.exe caught by [Procmon](https://docs.microsoft.co
 
 <img src="https://github.com/Yet-Zio/WusaBypassUAC/blob/main/snaps/procmon.PNG">
 
-However, wusa.exe is trying to look for a DLL called comctl32.dll similar to how dccw.exe looks for GdiPlus.dll
+However, wusa.exe is trying to look for a DLL called [comctl32.dll](https://docs.microsoft.com/en-us/windows/win32/controls/common-controls-intro) similar to how dccw.exe looks for GdiPlus.dll. 
+Since it doesn't contain the DLL, wusa.exe looks under WinSxS for a folder with the structure:
+<p>[arch]_microsoft.windows.common-controls_[sequencial_code]_[windows_version]_none_[sequencial_number]</p>
+
