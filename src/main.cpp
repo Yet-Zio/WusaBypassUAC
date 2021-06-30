@@ -1,3 +1,4 @@
+#include <iostream>
 #include "wusauacbypass.h"
 
 int main(){
