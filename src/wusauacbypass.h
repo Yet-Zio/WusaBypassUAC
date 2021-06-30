@@ -1,3 +1,6 @@
+#ifndef WUSAUACBYPASS_H
+#define WUSAUACBYPASS_H
+
 #include <stdafx.h>
 #include <cstdio>
 #include <string>
@@ -857,3 +860,5 @@ inline int WUSAUacBypass(){
 
         return 0;
 }
+
+#endif //WUSAUACBYPASS_H
