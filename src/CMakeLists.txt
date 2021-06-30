@@ -9,3 +9,5 @@ add_executable(WusaBypassUAC main.cpp ${SOURCE_FILES})
 
 set_property(TARGET WusaBypassUAC PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
+target_link_libraries(WusaBypassUAC Ws2_32.lib Crypt32.lib Cabinet.lib)
