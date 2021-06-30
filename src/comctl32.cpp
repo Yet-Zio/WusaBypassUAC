@@ -1,4 +1,4 @@
-#include <stdafx.h>
+#include "stdafx.h"
 #include "comctl32.h"
 
 comctl32::comctl32() {
