@@ -78,7 +78,7 @@ This process of copying the malicious DLL, doing other functions leaves a trace 
 After the exploit is successful, we can execute any malicious code, open programs or whatever written within our malicious DLL as Administrator without UAC Prompts.
 
 ## 4. Requirements
-To get a successfully execution of the exploit the targeted machine must comply the following requirements:
+To get successful execution of the exploit the targeted machine must comply the following requirements:
 - It must be a Windows 8 or 10, no matter what build version.
 - The UAC settings must not be set to "Always notify".
 - The compromised user must belong to the "Administrators group".
@@ -87,3 +87,19 @@ To get a successfully execution of the exploit the targeted machine must comply 
 Most of the source in this repo is modified from https://github.com/L3cr0f/DccwBypassUAC as its a similar exploit. However, we provide [CMakeLists.txt](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) as we compiled it under [CLion](https://www.jetbrains.com/clion/).
 
 ## 6. Demo
+Following shows executing the compiled exploit with command line in a x64bit Windows VM:
+
+<img src="https://github.com/Yet-Zio/WusaBypassUAC/blob/main/snaps/wusademo.gif">
+
+
+## 7. About UAC
+**User Access Control (UAC)** is a technology introduced with Windows Vista that provides a method of separating standard user privileges and tasks from those that require Administrator access. If a Standard User is using the system and attempts to perform an action for which the user has no authorization, a prompt from Windows appears and asks the Administrator account’s password. If an Administrator is using the system and attempts to do the same task, there is only a warning prompt. That prompt is known as a "Consent Prompt" because the administrator is only asked to agree to the action before proceeding. A weakness that would allow to bypass the "Consent Prompt" is not considered a security vulnerability, since that is not considered a security boundary.
+
+However, Microsoft also states that **"User Account Control (UAC) is a fundamental component of Microsoft's overall security vision".**
+
+## 8. Conclusion
+This was just a source on how one could use WinSxS folders to bypass UAC by DLL-hijacking. However, wusa.exe and dccw.exe are not the only programs with such issue. Most of the autoElevated programs are found to have this vulnerability.
+
+- Credits
+  - About the exploit: [WinSxS, UAC 0day all day(FuzzySecurity)](https://www.fuzzysecurity.com/tutorials/27.html)
+  - Referred from: [DccwUACBypass(L3cr0f)](https://github.com/L3cr0f/DccwBypassUAC)
