@@ -77,3 +77,13 @@ This process of copying the malicious DLL, doing other functions leaves a trace 
 ## 3. Final Execution
 After the exploit is successful, we can execute any malicious code, open programs or whatever written within our malicious DLL as Administrator without UAC Prompts.
 
+## 4. Requirements
+To get a successfully execution of the exploit the targeted machine must comply the following requirements:
+- It must be a Windows 8 or 10, no matter what build version.
+- The UAC settings must not be set to "Always notify".
+- The compromised user must belong to the "Administrators group".
+
+## 5. Sources
+Most of the source in this repo is modified from https://github.com/L3cr0f/DccwBypassUAC as its a similar exploit. However, we provide [CMakeLists.txt](https://cmake.org/cmake/help/latest/guide/tutorial/index.html) as we compiled it under [CLion](https://www.jetbrains.com/clion/).
+
+## 6. Demo
